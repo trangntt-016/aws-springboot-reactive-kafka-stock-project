@@ -1,1 +1,1 @@
-package com.stock.microservices.invaccountsvc.service.model.impl;
+package com.stock.microservices.invaccountsvc.service.model;

@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.stock.microservices</groupId>
-    <artifactId>inv-account-svc</artifactId>
+    <artifactId>inv-market-svc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>inv-account-svc</name>
-    <description>inv-account-svc</description>
+    <name>inv-market-svc</name>
+    <description>inv-market-svc</description>
     <properties>
         <java.version>11</java.version>
         <io.awspring.cloud.version>3.0.0-M2</io.awspring.cloud.version>
@@ -34,7 +34,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
     <build>
