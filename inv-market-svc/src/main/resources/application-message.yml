@@ -1,0 +1,17 @@
+cloud:
+  aws:
+    sqs:
+      region: eu-west-1
+      rootUrl: http://localhost:4566/000000000000
+      common:
+        waitTimeOut: 20
+        maxNumberOfmessages: 10
+        maxInflightMessagesPerQueue: 10
+        maxMessagePerPoll: 10
+        pollTimeout: 10
+        permitAcquireTimeout: 30
+        coolPoolSize: 30
+        maxPoolSize: 30
+        keepAliveTimeInSeconds: 60
+        threadNamePrefix: "sqs_consumer_common_thread_"
+      inv-market-data-collection-queue: inv-market-data-collection-queue
