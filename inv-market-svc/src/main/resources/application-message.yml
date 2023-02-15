@@ -1,7 +1,7 @@
 cloud:
   aws:
+    region: eu-west-1
     sqs:
-      region: eu-west-1
       rootUrl: http://localhost:4566/000000000000
       common:
         waitTimeOut: 20

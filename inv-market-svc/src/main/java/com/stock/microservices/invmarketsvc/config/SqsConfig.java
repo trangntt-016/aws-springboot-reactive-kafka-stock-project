@@ -28,7 +28,7 @@ public class SqsConfig {
     }
 
     @Bean
-    public SqsMessageListenerContainerFactory<Object> defaultSqsListener(){
+    public SqsMessageListenerContainerFactory<Object> defaultSqsListenerContainerFactory(){
         log.info("Config default SQS listener with corePoolSize: {} , maxMessagePerPoll: {} , waitTimeOut: {}, maxNumberOfMessage {}",
                 sqsProperties.getCommon().getCorePoolSize(),
                 sqsProperties.getCommon().getMaxMessagesPerPoll(),
@@ -53,10 +53,10 @@ public class SqsConfig {
 
     @Bean
     public SqsAsyncClient sqsAsyncClient(){
-        log.info("Processing set up sqs config with rootUrl: {} in region : {}", sqsProperties.getRoolUrl(), region);
+        log.info("Processing set up sqs config with rootUrl: {} in region : {}", sqsProperties.getRootUrl(), region);
         return SqsAsyncClient
                 .builder()
-                .endpointOverride(URI.create(sqsProperties.getRoolUrl()))
+                .endpointOverride(URI.create(sqsProperties.getRootUrl()))
                 .region(Region.of(region))
                 .build();
     }
