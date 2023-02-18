@@ -10,7 +10,7 @@ on:
     types: [created]
 
 jobs:
-  unit-testing:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,10 +24,10 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
 
-    - name: Testing inv-account-svc
+    - name: Clean the package inv-account-svc
       working-directory: ./inv-account-svc # change directory to the inv-account-svc sub project
       run:
-        mvn clean package -DskipTests
+        sudo mvn -Dtest=PerfLatency#latencyTest test -X
         # run unit tests using Maven
 
 
