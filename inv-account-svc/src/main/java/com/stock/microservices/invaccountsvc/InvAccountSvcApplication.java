@@ -8,5 +8,4 @@ public class InvAccountSvcApplication {
     public static void main(String[] args) {
         SpringApplication.run(InvAccountSvcApplication.class, args);
     }
-
 }
