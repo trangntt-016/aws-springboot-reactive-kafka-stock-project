@@ -27,7 +27,7 @@ jobs:
     - name: Clean the package inv-account-svc
       working-directory: ./inv-account-svc # change directory to the inv-account-svc sub project
       run:
-        sudo mvn -Dtest=PerfLatency#latencyTest test -X
+        mvn test
         # run unit tests using Maven
 
 
