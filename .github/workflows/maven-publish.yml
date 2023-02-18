@@ -10,8 +10,7 @@ on:
     types: [created]
 
 jobs:
-  build:
-
+  unit-testing:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -27,9 +26,8 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-
     - name: Testing inv-account-svc
       working-directory: ./inv-account-svc # change directory to the inv-account-svc sub project
       run: mvn test # run unit tests using Maven
+
+
