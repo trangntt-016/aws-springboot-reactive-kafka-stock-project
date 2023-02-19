@@ -5,6 +5,7 @@ import io.awspring.cloud.sqs.config.SqsMessageListenerContainerFactory;
 import io.awspring.cloud.sqs.listener.acknowledgement.AcknowledgementOrdering;
 import io.awspring.cloud.sqs.listener.acknowledgement.handler.AcknowledgementMode;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,13 +23,14 @@ public class SqsConfig {
 
     private final String region;
 
+    @Autowired
     public SqsConfig(SqsProperties sqsProperties, @Value("${cloud.aws.region}") String region) {
         this.sqsProperties = sqsProperties;
         this.region = region;
     }
 
     @Bean
-    public SqsMessageListenerContainerFactory<Object> defaultSqsListener(){
+    public SqsMessageListenerContainerFactory<Object> defaultSqsListenerContainerFactory(){
         log.info("Config default SQS listener with corePoolSize: {} , maxMessagePerPoll: {} , waitTimeOut: {}, maxNumberOfMessage {}",
                 sqsProperties.getCommon().getCorePoolSize(),
                 sqsProperties.getCommon().getMaxMessagesPerPoll(),
@@ -53,10 +55,10 @@ public class SqsConfig {
 
     @Bean
     public SqsAsyncClient sqsAsyncClient(){
-        log.info("Processing set up sqs config with rootUrl: {} in region : {}", sqsProperties.getRoolUrl(), region);
+        log.info("Processing set up sqs config with rootUrl: {} in region : {}", sqsProperties.getRootUrl(), region);
         return SqsAsyncClient
                 .builder()
-                .endpointOverride(URI.create(sqsProperties.getRoolUrl()))
+                .endpointOverride(URI.create(sqsProperties.getRootUrl()))
                 .region(Region.of(region))
                 .build();
     }

@@ -13,7 +13,7 @@ public class SqsProperties {
 
     private Queue common;
 
-    private String roolUrl;
+    private String rootUrl;
 
     @Data
     @NoArgsConstructor
