@@ -1,6 +1,6 @@
 cloud:
   aws:
-    region: eu-west-1
+    region: eu-central-1
     sqs:
       rootUrl: http://localhost:4566/000000000000
       common:
@@ -15,3 +15,4 @@ cloud:
         keepAliveTimeInSeconds: 60
         threadNamePrefix: "sqs_consumer_common_thread_"
       inv-market-data-collection-queue: inv-market-data-collection-queue
+      isDefaultCredential: true
