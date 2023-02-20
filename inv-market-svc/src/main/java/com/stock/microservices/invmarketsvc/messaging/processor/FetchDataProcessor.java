@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class FetchDataProcessor {
 
-    @SqsListener(value = "${cloud.aws.sqs.inv-market-data-collection-queue")
+    @SqsListener(value = "${cloud.aws.sqs.inv-market-data-collection-queue}")
     public void onFetchData(Message<FetchMarketEvent> message){
         log.info("Received fetch data event with payload: {}", message.getPayload());
         FetchMarketEvent event = message.getPayload();
