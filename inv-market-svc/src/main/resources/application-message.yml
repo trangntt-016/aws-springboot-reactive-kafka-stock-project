@@ -5,7 +5,7 @@ cloud:
       rootUrl: http://localhost:4566/000000000000
       common:
         waitTimeOut: 20
-        maxNumberOfmessages: 10
+        maxNumberOfMessages: 10
         maxInflightMessagesPerQueue: 10
         maxMessagesPerPoll: 10
         pollTimeout: 10
