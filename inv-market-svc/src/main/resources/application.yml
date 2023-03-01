@@ -8,16 +8,18 @@ spring:
     include: "message"
   security:
     client:
-      retryable: 3
-      period: 3000
+      retryable:
+        maxAttempts: 3
+        period: 3000
+      options:
+        readTimeoutMill: 30000
+        writeTimeoutMill: 15000
+        responseTimeoutMill: 30000
     duration:
       minOfSeconds: 3
       maxOfSecons: 7
       timeOutOfSecond: 30
-    options:
-      readTimeoutMill: 30000
-      writeTimeoutMill: 15000
-      responseTimeoutMill: 30000
+
     registration:
       vcb-broker:
         clientId: "CKRJ0KJA5MM8JUZWCWKL"

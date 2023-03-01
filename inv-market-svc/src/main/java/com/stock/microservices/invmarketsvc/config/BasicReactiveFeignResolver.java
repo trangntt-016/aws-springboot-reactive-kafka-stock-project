@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import reactivefeign.ReactiveOptions;
 import reactivefeign.client.ReactiveFeignException;
+import reactivefeign.client.ReactiveHttpRequestInterceptor;
 import reactivefeign.client.ReactiveHttpResponse;
 import reactivefeign.client.log.DefaultReactiveLogger;
 import reactivefeign.client.statushandler.ReactiveStatusHandler;
@@ -39,7 +40,11 @@ public class BasicReactiveFeignResolver {
                                                          BasicAuthConfiguration authenticationProvider){
         Map<String, FeignConnector> feignConnectorMap = new HashMap<>();
 
-        return null;
+        properties.getRegistration().forEach((tenant, config)->{
+            ReactiveHttpRequestInterceptor reactiveHttpRequestInterceptor = authenticationProvider.configAuthenticationInterceptor(tenant.toString(), properties.getRegistration().get(""));
+
+        });
+        return feignConnectorMap;
     }
 
     @Bean
