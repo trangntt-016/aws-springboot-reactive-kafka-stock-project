@@ -8,18 +8,22 @@ import feign.Request;
 import feign.Response;
 import feign.RetryableException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.openfeign.support.SpringMvcContract;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
+import reactivefeign.ReactiveContract;
 import reactivefeign.ReactiveOptions;
 import reactivefeign.client.ReactiveFeignException;
+import reactivefeign.client.ReactiveHttpRequestInterceptor;
 import reactivefeign.client.ReactiveHttpResponse;
 import reactivefeign.client.log.DefaultReactiveLogger;
 import reactivefeign.client.statushandler.ReactiveStatusHandler;
 import reactivefeign.retry.BasicReactiveRetryPolicy;
 import reactivefeign.retry.ReactiveRetryPolicy;
 import reactivefeign.utils.FeignUtils;
+import reactivefeign.webclient.WebReactiveFeign;
 import reactivefeign.webclient.WebReactiveOptions;
 import reactor.core.publisher.Mono;
 
@@ -28,6 +32,8 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import static reactivefeign.webclient.WebReactiveFeign.builder;
 
 @Slf4j
 @Configuration
@@ -39,7 +45,20 @@ public class BasicReactiveFeignResolver {
                                                          BasicAuthConfiguration authenticationProvider){
         Map<String, FeignConnector> feignConnectorMap = new HashMap<>();
 
-        return null;
+        properties.getRegistration().forEach((tenant, config)->{
+            ReactiveHttpRequestInterceptor reactiveHttpRequestInterceptor = authenticationProvider.configAuthenticationInterceptor(tenant.toString(), properties.getRegistration().get(tenant.toString()));
+
+            FeignConnector connector = WebReactiveFeign.<FeignConnector>builder()
+                    .addRequestInterceptor(reactiveHttpRequestInterceptor)
+                    .contract(new ReactiveContract(new SpringMvcContract()))
+                    .statusHandler(reactiveStatusHandler())
+                    .retryWhen(reactiveRetryPolicy(properties))
+                    .target(FeignConnector.class, config.getUrl());
+
+            feignConnectorMap.put(tenant,connector);
+
+        });
+        return feignConnectorMap;
     }
 
     @Bean

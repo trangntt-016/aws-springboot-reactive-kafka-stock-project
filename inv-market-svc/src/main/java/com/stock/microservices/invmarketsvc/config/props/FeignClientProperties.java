@@ -31,9 +31,9 @@ public class FeignClientProperties implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         if (Objects.isNull(this.retryable))
-            this.setRetryable(Retryable.DEFAULT);
+            this.setRetryable(new Retryable(3 ,2000L));
         if (Objects.isNull(this.options))
-            this.setOptions(Options.DEFAULT);
+            this.setOptions( new Options(2000L ,2000L, 2000L));
         this.registration.values().removeIf(con -> StringUtils.isBlank(con.clientId) || StringUtils.isBlank(con.clientSecret));
     }
 
@@ -52,7 +52,7 @@ public class FeignClientProperties implements InitializingBean {
     @NoArgsConstructor
     public static class Retryable{
 
-        public static final Retryable DEFAULT = new Retryable(3 ,2000L);
+        //public static final Retryable DEFAULT = new Retryable(3 ,2000L);
 
         private Integer maxAttempts;
 
@@ -64,7 +64,7 @@ public class FeignClientProperties implements InitializingBean {
     @NoArgsConstructor
     public static class Options{
 
-        public static final Options DEFAULT = new Options(2000L ,2000L, 2000L);
+        //public static final Options DEFAULT = new Options(2000L ,2000L, 2000L);
 
         private Long readTimeOutMill;
 
