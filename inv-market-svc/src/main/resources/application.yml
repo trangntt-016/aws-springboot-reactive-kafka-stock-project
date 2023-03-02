@@ -15,19 +15,18 @@ spring:
         readTimeoutMill: 30000
         writeTimeoutMill: 15000
         responseTimeoutMill: 30000
-    duration:
-      minOfSeconds: 3
-      maxOfSecons: 7
-      timeOutOfSecond: 30
-
-    registration:
-      vcb-broker:
-        clientId: "CKRJ0KJA5MM8JUZWCWKL"
-        clientSecret: "JcPk4Yoecn9BVuzpU91KeZgPS9HON6eZuOwE4apo"
-        url: "https://broker-api.sandbox.alpaca.markets"
-        authenticationType: "basic"
-      vcb-market:
-        clientId: "CKRJ0KJA5MM8JUZWCWKL"
-        clientSecret: "JcPk4Yoecn9BVuzpU91KeZgPS9HON6eZuOwE4apo"
-        url: "https://data.sandbox.alpaca.markets"
-        authenticationType: "basic"
+      duration:
+        minOfSeconds: 3
+        maxOfSecons: 7
+        timeOutOfSecond: 30
+      registration:
+        vcb-broker:
+          clientId: "CKRJ0KJA5MM8JUZWCWKL"
+          clientSecret: "JcPk4Yoecn9BVuzpU91KeZgPS9HON6eZuOwE4apo"
+          url: "https://broker-api.sandbox.alpaca.markets"
+          authenticationType: "basic"
+        vcb-market:
+          clientId: "CKRJ0KJA5MM8JUZWCWKL"
+          clientSecret: "JcPk4Yoecn9BVuzpU91KeZgPS9HON6eZuOwE4apo"
+          url: "https://data.sandbox.alpaca.markets"
+          authenticationType: "basic"
