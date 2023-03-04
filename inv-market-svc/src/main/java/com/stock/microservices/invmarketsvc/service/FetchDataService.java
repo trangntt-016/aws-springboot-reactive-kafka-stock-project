@@ -1,6 +1,6 @@
 package com.stock.microservices.invmarketsvc.service;
 
-import com.stock.microservices.invmarketsvc.messaging.model.FetchMarketEvent;
+import com.stock.microservices.invmarketsvc.connector.model.FetchMarketEvent;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;
