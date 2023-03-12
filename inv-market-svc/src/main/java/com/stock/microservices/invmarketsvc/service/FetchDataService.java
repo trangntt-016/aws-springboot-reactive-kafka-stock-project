@@ -19,7 +19,7 @@ public class FetchDataService {
 
 
 
-    public List<Asset> getAssets(){
+    public String getAssets(){
 
         // Step1: marketService.fetchData();
 

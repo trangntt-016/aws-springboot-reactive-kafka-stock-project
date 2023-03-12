@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @AllArgsConstructor
 public class FetchDataProcessor {
-    private final FeignConnector feignConnector;
+    //private final FeignConnector feignConnector;
 
     @SqsListener(value = "${cloud.aws.sqs.inv-market-data-collection-queue}")
     public void onFetchData(Message<FetchMarketEvent> message){
@@ -23,7 +23,5 @@ public class FetchDataProcessor {
         FetchMarketEvent event = message.getPayload();
     }
 
-    public Mono<Void> fetchAllMarket(Equity equity){
-        return feignConnector.getAllAssetsByEquity(equity, "ACTIVE").collectList().flatMapMany(assets -> save());
-    }
+
 }

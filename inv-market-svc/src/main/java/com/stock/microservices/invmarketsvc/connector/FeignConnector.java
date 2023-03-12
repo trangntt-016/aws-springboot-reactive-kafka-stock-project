@@ -5,7 +5,5 @@ import com.stock.microservices.invmarketsvc.model.Asset;
 import reactor.core.publisher.Flux;
 
 public interface FeignConnector {
-    Flux<Asset>getAllAssetsByEquity(Equity equity, String status){
 
-    }
 }
