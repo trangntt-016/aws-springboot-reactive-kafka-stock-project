@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -19,11 +20,11 @@ public class FetchDataService {
 
 
 
-    public String getAssets(){
+    public Mono<String> getAssets(){
 
         // Step1: marketService.fetchData();
 
-            return iFeignDataService.getAssets();
+            return Mono.just("hello");
 
         // Todo: fetchDate(Equity equity, String status)
 

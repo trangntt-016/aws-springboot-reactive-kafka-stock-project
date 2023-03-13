@@ -2,9 +2,10 @@ package com.stock.microservices.invmarketsvc.config.client;
 
 
 import com.stock.microservices.invmarketsvc.config.props.FeignClientProperties;
+import feign.auth.BasicAuthRequestInterceptor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import reactivefeign.client.ReactiveHttpRequest;
 import reactivefeign.client.ReactiveHttpRequestInterceptor;
 import reactor.core.publisher.Mono;
 
@@ -27,5 +28,10 @@ public class BasicAuthConfiguration {
             reactiveHttpRequest.headers().put(AUTHORIZATION_HEADER, List.of(accessToken));
             return Mono.just(reactiveHttpRequest);
         };
+    }
+
+    @Bean
+    public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {
+        return new BasicAuthRequestInterceptor("CKTX1IY1UF39RBBCB43D", "unyJ8VrXMyBxNrq5fPdKKlijS4WsZnrD7wmr9KMB");
     }
 }
