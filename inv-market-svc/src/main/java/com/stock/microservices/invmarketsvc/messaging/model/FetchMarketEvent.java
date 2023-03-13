@@ -1,4 +1,4 @@
-package com.stock.microservices.invmarketsvc.connector.model;
+package com.stock.microservices.invmarketsvc.messaging.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

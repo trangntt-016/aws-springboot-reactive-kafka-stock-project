@@ -10,7 +10,6 @@ import java.util.TimeZone;
 
 @SpringBootApplication
 @EnableReactiveFeignClients
-@EnableFeignClients
 public class InvMarketSvcApplication {
     public static void main(String[] args) {
         TimeZone.setDefault(TimeZone.getTimeZone(ZoneId.of("UTC")));
