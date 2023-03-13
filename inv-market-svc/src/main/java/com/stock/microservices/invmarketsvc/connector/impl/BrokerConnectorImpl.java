@@ -17,7 +17,7 @@ public class BrokerConnectorImpl implements BrokerConnector {
 
     private final ReactiveFeignResolver reactiveFeignResolver;
 
-    private final String COMPONENT_IDENTIFIER = "broker";
+    private static final String COMPONENT_IDENTIFIER = "broker";
 
     @Override
     public Flux<Asset> getAllAssets(String tenantId, Equity equity) {
