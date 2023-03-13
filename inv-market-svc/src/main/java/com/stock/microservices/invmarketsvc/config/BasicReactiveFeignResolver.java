@@ -33,8 +33,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static reactivefeign.webclient.WebReactiveFeign.builder;
-
 @Slf4j
 @Configuration
 public class BasicReactiveFeignResolver {
