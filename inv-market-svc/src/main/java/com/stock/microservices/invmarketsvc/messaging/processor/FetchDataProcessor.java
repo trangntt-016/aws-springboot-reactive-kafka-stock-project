@@ -19,7 +19,7 @@ public class FetchDataProcessor {
     public void onFetchData(Message<FetchMarketEvent> message){
         log.info("Received fetch data event with payload: {}", message.getPayload());
         FetchMarketEvent event = message.getPayload();
-
+        marketService.fetchAssetsData("vcb", event.getEquity()).subscribe();
     }
 
 

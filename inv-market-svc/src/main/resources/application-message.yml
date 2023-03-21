@@ -1,6 +1,6 @@
 cloud:
   aws:
-    region: us-east-1
+    region: eu-central-1
     sqs:
       rootUrl: http://localhost:4566/000000000000
       common:

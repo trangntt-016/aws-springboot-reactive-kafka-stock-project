@@ -1,14 +1,14 @@
 package com.stock.microservices.invmarketsvc.connector;
 
-import com.stock.microservices.invmarketsvc.enums.Equity;
-import com.stock.microservices.invmarketsvc.enums.Status;
-import com.stock.microservices.invmarketsvc.model.Asset;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.stock.microservices.invmarketsvc.connector.model.MarketAssetResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import reactor.core.publisher.Flux;
 
 public interface FeignConnector {
 
-    @GetMapping("/v1/assets")
-    Flux<Asset> getAllAssets(@RequestParam("status") Status status, @RequestParam("asset_class") Equity equity);
+    @RequestMapping(method = RequestMethod.GET, value ="/v1/assets")
+    Flux<MarketAssetResult> getAllAssets(@RequestParam("status") String status,
+                                         @RequestParam("asset_class") String equity);
 }

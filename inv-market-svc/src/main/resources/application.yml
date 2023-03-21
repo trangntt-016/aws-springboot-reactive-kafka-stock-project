@@ -21,12 +21,12 @@ spring:
         timeOutOfSecond: 30
       registration:
         vcb-broker:
-          clientId: "CKRJ0KJA5MM8JUZWCWKL"
-          clientSecret: "JcPk4Yoecn9BVuzpU91KeZgPS9HON6eZuOwE4apo"
+          clientId: "CK7SH6JUA9NRJE7BJMKF"
+          clientSecret: "CmXXAmj5zthc6nYdPLua4t8JO2kXv3pW3gQ0y43I"
           url: "https://broker-api.sandbox.alpaca.markets"
           authenticationType: "basic"
         vcb-market:
-          clientId: "CKRJ0KJA5MM8JUZWCWKL"
-          clientSecret: "JcPk4Yoecn9BVuzpU91KeZgPS9HON6eZuOwE4apo"
+          clientId: "CK7SH6JUA9NRJE7BJMKF"
+          clientSecret: "CmXXAmj5zthc6nYdPLua4t8JO2kXv3pW3gQ0y43I"
           url: "https://data.sandbox.alpaca.markets"
           authenticationType: "basic"

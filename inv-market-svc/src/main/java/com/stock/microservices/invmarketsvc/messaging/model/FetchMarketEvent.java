@@ -1,5 +1,6 @@
 package com.stock.microservices.invmarketsvc.messaging.model;
 
+import com.stock.microservices.invmarketsvc.enums.Equity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,5 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FetchMarketEvent {
 
-    private String equity;
+    private Equity equity;
 }

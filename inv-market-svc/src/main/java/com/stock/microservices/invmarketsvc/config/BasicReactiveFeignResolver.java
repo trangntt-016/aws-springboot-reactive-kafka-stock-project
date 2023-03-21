@@ -44,7 +44,7 @@ public class BasicReactiveFeignResolver {
         Map<String, FeignConnector> feignConnectorMap = new HashMap<>();
 
         properties.getRegistration().forEach((tenant, config)->{
-            ReactiveHttpRequestInterceptor reactiveHttpRequestInterceptor = authenticationProvider.configAuthenticationInterceptor(tenant.toString(), properties.getRegistration().get(tenant.toString()));
+            ReactiveHttpRequestInterceptor reactiveHttpRequestInterceptor = authenticationProvider.configAuthenticationInterceptor(tenant, config);
 
             FeignConnector connector = WebReactiveFeign.<FeignConnector>builder()
                     .addRequestInterceptor(reactiveHttpRequestInterceptor)

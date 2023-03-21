@@ -2,9 +2,9 @@ package com.stock.microservices.invmarketsvc.connector.impl;
 
 import com.stock.microservices.invmarketsvc.config.ReactiveFeignResolver;
 import com.stock.microservices.invmarketsvc.connector.BrokerConnector;
+import com.stock.microservices.invmarketsvc.connector.model.MarketAssetResult;
 import com.stock.microservices.invmarketsvc.enums.Equity;
 import com.stock.microservices.invmarketsvc.enums.Status;
-import com.stock.microservices.invmarketsvc.model.Asset;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,8 @@ public class BrokerConnectorImpl implements BrokerConnector {
     private static final String COMPONENT_IDENTIFIER = "broker";
 
     @Override
-    public Flux<Asset> getAllAssets(String tenantId, Equity equity) {
-        return reactiveFeignResolver.getDomainByClient(tenantId,COMPONENT_IDENTIFIER).getAllAssets(Status.ACTIVE, equity);
+    public Flux<MarketAssetResult> getAllAssets(String tenantId, Equity equity) {
+        return reactiveFeignResolver.getDomainByClient(tenantId, COMPONENT_IDENTIFIER)
+                .getAllAssets(Status.ACTIVE.getValue(), equity.getValue());
     }
 }

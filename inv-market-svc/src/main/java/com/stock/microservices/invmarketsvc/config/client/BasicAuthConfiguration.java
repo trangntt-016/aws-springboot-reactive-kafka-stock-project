@@ -6,6 +6,7 @@ import feign.auth.BasicAuthRequestInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import reactivefeign.client.ReactiveHttpRequestInterceptor;
 import reactor.core.publisher.Mono;
 
@@ -16,16 +17,21 @@ import java.util.List;
 
 @Slf4j
 @Configuration
+@Component
 public class BasicAuthConfiguration {
     private final String AUTHORIZATION_HEADER = "Authorization";
 
-    private final String BASIC_AUTHORIZATION = "Basic";
+    private final String BASIC_AUTHORIZATION = "Basic ";
 
     public ReactiveHttpRequestInterceptor configAuthenticationInterceptor(String tenantId, FeignClientProperties.Registration properties){
-        log.info("Start interceptor basic authentication for tenantId: {}", tenantId);
         return reactiveHttpRequest -> {
-            String accessToken = Base64.getEncoder().encodeToString((properties.getClientId()+":"+properties.getClientSecret()).getBytes(StandardCharsets.UTF_8));
+            log.info("Start interceptor basic authentication for tenantId: {}", tenantId);
+
+            String accessToken = BASIC_AUTHORIZATION + Base64.getEncoder()
+                    .encodeToString((properties.getClientId()+":"+properties.getClientSecret()).getBytes());
+
             reactiveHttpRequest.headers().put(AUTHORIZATION_HEADER, List.of(accessToken));
+            log.info("Basic authentication access token added with token: {}", accessToken);
             return Mono.just(reactiveHttpRequest);
         };
     }
