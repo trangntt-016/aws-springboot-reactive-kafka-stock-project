@@ -27,7 +27,7 @@ public class MarketAssetResult {
 
     private String status;
 
-    private Boolean tradeable;
+    private boolean isTradeable;
 
-    private Boolean fractionable;
+    private boolean fractionable;
 }
