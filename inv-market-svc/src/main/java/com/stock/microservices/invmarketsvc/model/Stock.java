@@ -1,10 +1,7 @@
 package com.stock.microservices.invmarketsvc.model;
 
 import com.stock.microservices.invmarketsvc.connector.model.MarketAssetResult;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,9 +10,9 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Table(name = "stock")
 public class Stock implements Serializable {
+
     @Id
     @Column(name = "id")
     private String id;
@@ -37,8 +34,6 @@ public class Stock implements Serializable {
 
     @Column
     private boolean fractionable;
-
-
 
     public static Stock init(MarketAssetResult assetResult){
         return Stock.builder()
